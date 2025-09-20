@@ -1,0 +1,65 @@
+{
+  "IO": {
+    "file_A": "ABC/sleipner_A.bin",
+    "file_b": "ABC/sleipner_b.bin",
+    "header": "1",
+    "format": "bin",
+    "write": "0",
+    "wfile_A": "null",
+    "wfile_b": "null"
+  },
+  "sol": {
+    "type":      "rgmres",
+    "input_file": "optional",
+    "reltol":    "0.01",
+    "restart":   "100",
+    "itmax":     "100",
+    "use_x0":     "0",
+    "verbosity": "1"
+  },
+  "prec": {
+    "type":         "CPR",  
+    "verbosity":    "0",
+    "row_order":    "12",
+    "col_order":    "12",
+    "block_size":   "2", 
+    "pressure_id":  "0",
+    "seq":          "3",
+    "weights":       "quasiimpes_GE",
+    "use_drs":      "0",
+    "drs": {
+        "e_dd": "0.9999",
+        "e_ps": "0.0"
+    },
+    "CPD":          "1",
+    "tol_zero":     "1e-30",
+    "prec_glo": {
+      "type":       "FSAI",
+      "input_file": "optional",
+      "tol_rel":     "0", // {0.2}
+      "tol_abs":     "0", // {1e-16}
+      "verbosity":  "0",
+      "power":      "1",
+      "block_size": "1"
+    },
+    "prec_loc": {
+      "type":       "hypre_AMG",
+      "input_file": "optional",
+      "verbosity":  "0",
+      "block_size": "1",
+      "tol_rel": "0", // {1e-4}
+      "amg_coarse_type": "10", // // 10 -- HMIS, 8 -- PMIS
+      "amg_relax_type": "-1", // 17 -- FCF-Jacobi, -1 -- default
+      "amg_agg_levs": "0", 
+      "amg_agg_path": "4", 
+      "amg_A_drop_tol": "1e-4", 
+      "amg_prol_trunc_fac": "1e-3", 
+      "amg_SoC_alpha": "0.5" // SoC
+    }
+  },
+  "parallel": {
+    "hardware": "CPU",
+    "np": "1",
+    "nranks": "1"  
+  }
+}

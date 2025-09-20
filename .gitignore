@@ -1,0 +1,6 @@
+build*
+CMakeCache.txt
+.vscode
+CMakePresets.json
+*.cmake
+
